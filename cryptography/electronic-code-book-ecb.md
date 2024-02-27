@@ -2,37 +2,35 @@
 
 <details>
 
-<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+<summary><strong>Вивчайте методи зламу AWS з нуля та станьте експертом з курсом</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
 
-Other ways to support HackTricks:
-
-* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
-* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
-* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
-* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+* Ви працюєте в **компанії з кібербезпеки**? Хочете бачити **рекламу своєї компанії на HackTricks**? чи хочете отримати доступ до **останньої версії PEASS або завантажити HackTricks у форматі PDF**? Ознайомтеся з [**ПЛАНАМИ ПЕРЕДПЛАТИ**](https://github.com/sponsors/carlospolop)!
+* Відкрийте для себе ексклюзивні [NFT](https://opensea.io/collection/the-peass-family) з нашої колекції [**The PEASS Family**](https://opensea.io/collection/the-peass-family)
+* Отримайте офіційний [**PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* **Приєднуйтеся до [**💬**](https://emojipedia.org/speech-balloon/) [**Discord групи**](https://discord.gg/hRep4RUj7f) або [**telegram каналу**](https://t.me/peass) чи **підписуйтесь** на мене в **Twitter** 🐦[**@carlospolopm**](https://twitter.com/hacktricks_live)**.
+* **Поділіться вашими хакерськими фішками, надіславши Pull Request до репозиторію [hacktricks](https://github.com/carlospolop/hacktricks) або [hacktricks-cloud](https://github.com/carlospolop/hacktricks-cloud)**.
 
 </details>
 
 
 # ECB
 
-(ECB) Electronic Code Book - symmetric encryption scheme which **replaces each block of the clear text** by the **block of ciphertext**. It is the **simplest** encryption scheme. The main idea is to **split** the clear text into **blocks of N bits** (depends on the size of the block of input data, encryption algorithm) and then to encrypt (decrypt) each block of clear text using the only key.
+(ECB) Electronic Code Book - це схема симетричного шифрування, яка **замінює кожен блок тексту** на **блок зашифрованого тексту**. Це **найпростіша** схема шифрування. Основна ідея полягає в тому, щоб **розділити** текст на **блоки по N біт** (залежно від розміру блоку вхідних даних, алгоритму шифрування) та потім шифрувати (розшифровувати) кожен блок тексту, використовуючи один ключ.
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/ECB_decryption.svg/601px-ECB_decryption.svg.png)
 
-Using ECB has multiple security implications:
+Використання ECB має кілька проблем з безпекою:
 
-* **Blocks from encrypted message can be removed**
-* **Blocks from encrypted message can be moved around**
+* **Блоки з зашифрованого повідомлення можуть бути видалені**
+* **Блоки з зашифрованого повідомлення можуть бути переміщені**
 
-# Detection of the vulnerability
+# Виявлення вразливості
 
-Imagine you login into an application several times and you **always get the same cookie**. This is because the cookie of the application is **`<username>|<password>`**.\
-Then, you generate to new users, both of them with the **same long password** and **almost** the **same** **username**.\
-You find out that the **blocks of 8B** where the **info of both users** is the same are **equals**. Then, you imagine that this might be because **ECB is being used**. 
+Уявіть, що ви входите в додаток кілька разів і **завжди отримуєте однакове значення своїх кукі**. Це тому, що кукі застосунку має формат **`<username>|<password>`**.\
+Потім ви створюєте двох нових користувачів, обидва з **однаковим довгим паролем** і **майже однаковим юзернеймом**.\
+Виявляється, що **блоки по 8B**, де **інформація обох користувачів** однакова **співпадають**. Тоді ви припускаєте, що це може бути тому, що **використовується ECB**.
 
-Like in the following example. Observe how these** 2 decoded cookies** has several times the block **`\x23U\xE45K\xCB\x21\xC8`**
+Як у наступному прикладі. Спостерігайте, як ці **2 розкодовані cookies** мають повторюваний кілька разів блок **`\x23U\xE45K\xCB\x21\xC8`**
 
 ```
 \x23U\xE45K\xCB\x21\xC8\x23U\xE45K\xCB\x21\xC8\x04\xB6\xE1H\xD1\x1E \xB6\x23U\xE45K\xCB\x21\xC8\x23U\xE45K\xCB\x21\xC8+=\xD4F\xF7\x99\xD9\xA9
@@ -40,9 +38,9 @@ Like in the following example. Observe how these** 2 decoded cookies** has sever
 \x23U\xE45K\xCB\x21\xC8\x23U\xE45K\xCB\x21\xC8\x04\xB6\xE1H\xD1\x1E \xB6\x23U\xE45K\xCB\x21\xC8\x23U\xE45K\xCB\x21\xC8+=\xD4F\xF7\x99\xD9\xA9
 ```
 
-This is because the **username and password of those cookies contained several times the letter "a"** (for example). The **blocks** that are **different** are blocks that contained **at least 1 different character** (maybe the delimiter "|" or some necessary difference in the username).
+Це тому, що **юзернейм та пароль цих cookie містили кілька разів літеру "a"** (наприклад). **Блоки**, які **відрізняються**, - це блоки, які містили **принаймні 1 відмінний символ** (можливо, сепаратор "|" або якась необхідна відмінність в імені користувача).
 
-Now, the attacker just need to discover if the format is `<username><delimiter><password>` or `<password><delimiter><username>`. For doing that, he can just **generate several usernames **with s**imilar and long usernames and passwords until he find the format and the length of the delimiter:**
+Тепер зловмиснику лише потрібно визначити, чи формат є `<username><delimiter><password>` або `<password><delimiter><username>`. Для цього він може просто **створити кілька користувачів з схожими та довгими юзернеймами та паролями, поки не визначить формат та довжину сепаратора**:
 
 | Username length: | Password length: | Username+Password length: | Cookie's length (after decoding): |
 | ---------------- | ---------------- | ------------------------- | --------------------------------- |
@@ -52,52 +50,50 @@ Now, the attacker just need to discover if the format is `<username><delimiter><
 | 4                | 4                | 8                         | 16                                |
 | 7                | 7                | 14                        | 16                                |
 
-# Exploitation of the vulnerability
+# Експлуатація вразливості
 
-## Removing entire blocks
+## Видалення блоків
 
-Knowing the format of the cookie (`<username>|<password>`), in order to impersonate the username `admin` create a new user called `aaaaaaaaadmin` and get the cookie and decode it:
+Знаючи формат cookie (`<username>|<password>`), щоб вдати з себе користувача `admin`, створіть нового користувача з ім'ям `aaaaaaaaadmin` і отримайте та розкодуйте cookie:
 
 ```
 \x23U\xE45K\xCB\x21\xC8\xE0Vd8oE\x123\aO\x43T\x32\xD5U\xD4
 ```
 
-We can see the pattern `\x23U\xE45K\xCB\x21\xC8` created previously with the username that contained only `a`.\
-Then, you can remove the first block of 8B and you will et a valid cookie for the username `admin`:
+Ми можемо побачити патерн `\x23U\xE45K\xCB\x21\xC8`, створений раніше з ім'ям користувача, яке містило лише `a`.\
+Потім ви можете видалити перший блок 8B, і ви отримаєте дійсне значення cookie для юзернейма `admin`:
 
 ```
 \xE0Vd8oE\x123\aO\x43T\x32\xD5U\xD4
 ```
 
-## Moving blocks
+## Переміщення блоків
 
-In many databases it is the same to search for `WHERE username='admin';` or for `WHERE username='admin    ';` _(Note the extra spaces)_
+У багатьох базах даних пошук `WHERE username='admin';` та `WHERE username='admin ';` _(Зверніть увагу на додаткові пробіли)_ вважається однаковим.
 
-So, another way to impersonate the user `admin` would be to:
+Отже, інший спосіб вдатися з себе користувача `admin` може бути таким:
 
-* Generate a username that: `len(<username>) + len(<delimiter) % len(block)`. With a block size of `8B` you can generate username called: `username       `, with the delimiter `|` the chunk `<username><delimiter>` will generate 2 blocks of 8Bs.
-* Then, generate a password that will fill an exact number of blocks containing the username we want to impersonate and spaces, like: `admin   ` 
+* Створіть ім'я користувача так, щоб: `len(<username>) + len(<delimiter) % len(block)`. З розміром блоку `8B` можна створити ім'я користувача: `username       `, з сепаратором `|` частина `<username><delimiter>` сформує 2 блоки по 8 байтів кожен.
+* Потім створіть пароль, який заповнить точну кількість блоків, що містять юзернейм, якого ви хочете імітувати, та пробіли, наприклад: `admin   `
 
-The cookie of this user is going to be composed by 3 blocks: the first 2 is the blocks of the username + delimiter and the third one of the password (which is faking the username): `username       |admin   `
+Кукі цього користувача будуть складатися з 3 блоків: перші 2 - це блоки юзернейма + сепаратор, а третій - пароль (який імітує юзернейм): `username       |admin   `
 
-**Then, just replace the first block with the last time and will be impersonating the user `admin`: `admin          |username`**
+**Потім просто замініть перший блок останнім, і ви зможете імітувати користувача `admin`: `admin          |username`**
 
-## References
+## Джерела
 
 * [http://cryptowiki.net/index.php?title=Electronic_Code_Book\_(ECB)](http://cryptowiki.net/index.php?title=Electronic_Code_Book_\(ECB\))
 
 
 <details>
 
-<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+<summary><strong>Вивчайте методи зламу AWS з нуля та станьте експертом з курсом</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
 
-Other ways to support HackTricks:
-
-* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
-* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
-* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
-* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+* Ви працюєте в **компанії з кібербезпеки**? Хочете бачити **рекламу своєї компанії на HackTricks**? чи хочете отримати доступ до **останньої версії PEASS або завантажити HackTricks у форматі PDF**? Ознайомтеся з [**ПЛАНАМИ ПЕРЕДПЛАТИ**](https://github.com/sponsors/carlospolop)!
+* Відкрийте для себе ексклюзивні [NFT](https://opensea.io/collection/the-peass-family) з нашої колекції [**The PEASS Family**](https://opensea.io/collection/the-peass-family)
+* Отримайте офіційний [**PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* **Приєднуйтеся до [**💬**](https://emojipedia.org/speech-balloon/) [**Discord групи**](https://discord.gg/hRep4RUj7f) або [**telegram каналу**](https://t.me/peass) чи **підписуйтесь** на мене в **Twitter** 🐦[**@carlospolopm**](https://twitter.com/hacktricks_live)**.
+* **Поділіться вашими хакерськими фішками, надіславши Pull Request до репозиторію [hacktricks](https://github.com/carlospolop/hacktricks) або [hacktricks-cloud](https://github.com/carlospolop/hacktricks-cloud)**.
 
 </details>
 
