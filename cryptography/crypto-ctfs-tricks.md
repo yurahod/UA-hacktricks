@@ -2,21 +2,19 @@
 
 <details>
 
-<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+<summary><strong>Вивчайте методи зламу AWS з нуля та станьте експертом з курсом</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
 
-Other ways to support HackTricks:
-
-* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
-* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
-* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
-* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+* Ви працюєте в **компанії з кібербезпеки**? Хочете бачити **рекламу своєї компанії на HackTricks**? чи хочете отримати доступ до **останньої версії PEASS або завантажити HackTricks у форматі PDF**? Ознайомтеся з [**ПЛАНАМИ ПЕРЕДПЛАТИ**](https://github.com/sponsors/carlospolop)!
+* Відкрийте для себе ексклюзивні [NFT](https://opensea.io/collection/the-peass-family) з нашої колекції [**The PEASS Family**](https://opensea.io/collection/the-peass-family)
+* Отримайте офіційний [**PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* **Приєднуйтеся до [**💬**](https://emojipedia.org/speech-balloon/) [**Discord групи**](https://discord.gg/hRep4RUj7f) або [**telegram каналу**](https://t.me/peass) чи **підписуйтесь** на мене в **Twitter** 🐦[**@carlospolopm**](https://twitter.com/hacktricks_live)**.
+* **Поділіться вашими хакерськими фішками, надіславши Pull Request до репозиторію [hacktricks](https://github.com/carlospolop/hacktricks) або [hacktricks-cloud](https://github.com/carlospolop/hacktricks-cloud)**.
 
 </details>
 
 ## Online Hashes DBs
 
-* _**Google it**_
+* _**Спробуйте загуглити хеш**_
 * [http://hashtoolkit.com/reverse-hash?hash=4d186321c1a7f0f354b297e8914ab240](http://hashtoolkit.com/reverse-hash?hash=4d186321c1a7f0f354b297e8914ab240)
 * [https://www.onlinehashcrack.com/](https://www.onlinehashcrack.com)
 * [https://crackstation.net/](https://crackstation.net)
@@ -37,7 +35,7 @@ Other ways to support HackTricks:
 
 ## Encoders
 
-Most of encoded data can be decoded with these 2 ressources:
+Більшість закодованих даних можна розкодувати за допомогою цих двох ресурсів:
 
 * [https://www.dcode.fr/tools-list](https://www.dcode.fr/tools-list)
 * [https://gchq.github.io/CyberChef/](https://gchq.github.io/CyberChef/)
@@ -45,7 +43,7 @@ Most of encoded data can be decoded with these 2 ressources:
 ### Substitution Autosolvers
 
 * [https://www.boxentriq.com/code-breaking/cryptogram](https://www.boxentriq.com/code-breaking/cryptogram)
-* [https://quipqiup.com/](https://quipqiup.com) - Very good !
+* [https://quipqiup.com/](https://quipqiup.com) - Взагалі супер !
 
 #### Caesar - ROTx Autosolvers
 
@@ -57,7 +55,7 @@ Most of encoded data can be decoded with these 2 ressources:
 
 ### Base Encodings Autosolver
 
-Check all these bases with: [https://github.com/dhondta/python-codext](https://github.com/dhondta/python-codext)
+Дані закодовані будь-яким з цих base алгоритмів можна розкодувати: [https://github.com/dhondta/python-codext](https://github.com/dhondta/python-codext)
 
 * **Ascii85**
   * `BQ%]q@psCd@rH0l`
@@ -214,7 +212,7 @@ Letters to their numerical value
 
 ### Affine Cipher Encode
 
-Letter to num `(ax+b)%26` (_a_ and _b_ are the keys and _x_ is the letter) and the result back to letter
+Літера в число за формулою `(ax+b)%26` (де _a_ і _b_ - ключі, а _x_ - літера), і результат назад у літеру.
 
 ```
 krodfdudfrod
@@ -222,15 +220,16 @@ krodfdudfrod
 
 ### SMS Code
 
-**Multitap** [replaces a letter](https://www.dcode.fr/word-letter-change) by repeated digits defined by the corresponding key code on a mobile [phone keypad](https://www.dcode.fr/phone-keypad-cipher) (This mode is used when writing SMS).\
-For example: 2=A, 22=B, 222=C, 3=D...\
-You can identify this code because you will see\*\* several numbers repeated\*\*.
 
-You can decode this code in: [https://www.dcode.fr/multitap-abc-cipher](https://www.dcode.fr/multitap-abc-cipher)
+**Multitap** [замінює літеру](https://www.dcode.fr/word-letter-change) повторюваними цифрами, визначеними відповідним кодом клавіші на [клавіатурі мобільного телефону](https://www.dcode.fr/phone-keypad-cipher) (Цей режим використовується при написанні SMS).\
+Наприклад: 2=A, 22=B, 222=C, 3=D...\
+Ви можете ідентифікувати цей код, коли побачите **декілька повторюваних цифр**.
+
+Можете це розкодувати в [https://www.dcode.fr/multitap-abc-cipher](https://www.dcode.fr/multitap-abc-cipher)
 
 ### Bacon Code
 
-Substitude each letter for 4 As or Bs (or 1s and 0s)
+Замінюйте кожну літеру на 4 `A` або `В` (або `1` та `0`).
 
 ```
 00111 01101 01010 00000 00010 00000 10000 00000 00010 01101 01010 00000
@@ -243,7 +242,7 @@ AABBB ABBAB ABABA AAAAA AAABA AAAAA BAAAA AAAAA AAABA ABBAB ABABA AAAAA
 
 ## Compression
 
-**Raw Deflate** and **Raw Inflate** (you can find both in Cyberchef) can compress and decompress data without headers.
+**Raw Deflate** та **Raw Inflate** (обидва можна знайти в Cyberchef) можуть стискати та розстискати дані без заголовків.
 
 ## Easy Crypto
 
@@ -253,7 +252,7 @@ AABBB ABBAB ABABA AAAAA AAABA AAAAA BAAAA AAAAA AAABA ABBAB ABABA AAAAA
 
 ### Bifid
 
-A keywork is needed
+Потрібен ключ.
 
 ```
 fgaargaamnlunesuneoa
@@ -261,7 +260,7 @@ fgaargaamnlunesuneoa
 
 ### Vigenere
 
-A keywork is needed
+Потрібен ключ.
 
 ```
 wodsyoidrods
@@ -275,7 +274,7 @@ wodsyoidrods
 
 ### Fernet
 
-2 base64 strings (token and key)
+2 значення в base64 (токен і ключ).
 
 ```
 Token:
@@ -289,7 +288,7 @@ Key:
 
 ### Samir Secret Sharing
 
-A secret is splitted in X parts and to recover it you need Y parts (_Y <=X_).
+Ключ поділено на X частин, і для його відновлення потрібно Y частин (_Y <= X_).
 
 ```
 8019f8fa5879aa3e07858d08308dc1a8b45
@@ -312,14 +311,12 @@ A secret is splitted in X parts and to recover it you need Y parts (_Y <=X_).
 
 <details>
 
-<summary><strong>Learn AWS hacking from zero to hero with</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
+<summary><strong>Вивчайте методи зламу AWS з нуля та станьте експертом з курсом</strong> <a href="https://training.hacktricks.xyz/courses/arte"><strong>htARTE (HackTricks AWS Red Team Expert)</strong></a><strong>!</strong></summary>
 
-Other ways to support HackTricks:
-
-* If you want to see your **company advertised in HackTricks** or **download HackTricks in PDF** Check the [**SUBSCRIPTION PLANS**](https://github.com/sponsors/carlospolop)!
-* Get the [**official PEASS & HackTricks swag**](https://peass.creator-spring.com)
-* Discover [**The PEASS Family**](https://opensea.io/collection/the-peass-family), our collection of exclusive [**NFTs**](https://opensea.io/collection/the-peass-family)
-* **Join the** 💬 [**Discord group**](https://discord.gg/hRep4RUj7f) or the [**telegram group**](https://t.me/peass) or **follow** us on **Twitter** 🐦 [**@hacktricks_live**](https://twitter.com/hacktricks_live)**.**
-* **Share your hacking tricks by submitting PRs to the** [**HackTricks**](https://github.com/carlospolop/hacktricks) and [**HackTricks Cloud**](https://github.com/carlospolop/hacktricks-cloud) github repos.
+* Ви працюєте в **компанії з кібербезпеки**? Хочете бачити **рекламу своєї компанії на HackTricks**? чи хочете отримати доступ до **останньої версії PEASS або завантажити HackTricks у форматі PDF**? Ознайомтеся з [**ПЛАНАМИ ПЕРЕДПЛАТИ**](https://github.com/sponsors/carlospolop)!
+* Відкрийте для себе ексклюзивні [NFT](https://opensea.io/collection/the-peass-family) з нашої колекції [**The PEASS Family**](https://opensea.io/collection/the-peass-family)
+* Отримайте офіційний [**PEASS & HackTricks swag**](https://peass.creator-spring.com)
+* **Приєднуйтеся до [**💬**](https://emojipedia.org/speech-balloon/) [**Discord групи**](https://discord.gg/hRep4RUj7f) або [**telegram каналу**](https://t.me/peass) чи **підписуйтесь** на мене в **Twitter** 🐦[**@carlospolopm**](https://twitter.com/hacktricks_live)**.
+* **Поділіться вашими хакерськими фішками, надіславши Pull Request до репозиторію [hacktricks](https://github.com/carlospolop/hacktricks) або [hacktricks-cloud](https://github.com/carlospolop/hacktricks-cloud)**.
 
 </details>
