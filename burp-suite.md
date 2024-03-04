@@ -13,15 +13,15 @@
 </details>
 
 
-# Basic Payloads
+# Основні пейлоади
 
-* **Simple List:** Just a list containing an entry in each line
-* **Runtime File:** A list read in runtime (not loaded in memory). For supporting big lists.
-* **Case Modification:** Apply some changes to a list of strings(No change, to lower, to UPPER, to Proper name - First capitalized and the rest to lower-, to Proper Name -First capitalized an the rest remains the same-.
-* **Numbers:** Generate numbers from X to Y using Z step or randomly.
-* **Brute Forcer:** Character set, min & max length.
+* **Простий список:** Лише список, що містить один запис на рядок.
+* **Обробка файлу під час виконання (Runtime File):** Список, що читається у часі виконання (не завантажується у пам'ять). Для підтримки великих списків.
+* **Зміна регістру:** Застосування деяких змін до списку (без змін, до нижнього регістру, до ВЕРХНЬОГО, до Власної Назви - перша літера велика, решта - маленькі, до Власної Назви - перша літера велика, решта залишається без змін).
+* **Числа:** Генерація чисел від X до Y з кроком Z або випадково.
+* **Брутфорсер (Brute Forcer):** Набір символів, мінімальна та максимальна довжина.
 
-[https://github.com/0xC01DF00D/Collabfiltrator](https://github.com/0xC01DF00D/Collabfiltrator) : Payload to execute commands and grab the output via DNS requests to burpcollab.
+[https://github.com/0xC01DF00D/Collabfiltrator](https://github.com/0xC01DF00D/Collabfiltrator) : Пейлоад для виконання команд і збору результатів через DNS-запити до burpcollab.
 
 {% embed url="https://medium.com/@ArtsSEC/burp-suite-exporter-462531be24e" %}
 
@@ -39,5 +39,4 @@
 * **Поділіться вашими хакерськими фішками, надіславши Pull Request до репозиторію [hacktricks](https://github.com/carlospolop/hacktricks) або [hacktricks-cloud](https://github.com/carlospolop/hacktricks-cloud)**.
 
 </details>
-
 
