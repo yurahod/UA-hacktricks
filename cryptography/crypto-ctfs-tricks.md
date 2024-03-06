@@ -212,7 +212,7 @@ Letters to their numerical value
 
 ### Affine Cipher Encode
 
-Літера в число за формулою `(ax+b)%26` (де _a_ і _b_ - ключі, а _x_ - літера), і результат назад у літеру.
+Тут використовується відповідність літери до її числового значення `(ax+b)%26` (де _a_ і _b_ - ключі, а _x_ - літера), і результат перетворюється назад у літеру.
 
 ```
 krodfdudfrod
@@ -242,7 +242,7 @@ AABBB ABBAB ABABA AAAAA AAABA AAAAA BAAAA AAAAA AAABA ABBAB ABABA AAAAA
 
 ## Compression
 
-**Raw Deflate** та **Raw Inflate** (обидва можна знайти в Cyberchef) можуть стискати та розстискати дані без заголовків.
+**Raw Deflate** та **Raw Inflate** (обидва можна знайти в Cyberchef) можуть без заголовків стискати дані та відновлювати їх первинний об'єм (розпаковувати).
 
 ## Easy Crypto
 
