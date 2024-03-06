@@ -20,7 +20,7 @@
 
 ***
 
-## **Експорт даних з файлів**
+## **Витягування даних з файлів**
 
 ### **Binwalk**
 Інструмент для пошуку вбудованих прихованих файлів та даних в бінарниках. Встановлюється через `apt`, а його код доступний на [GitHub](https://github.com/ReFirmLabs/binwalk).
@@ -117,7 +117,7 @@ Steghide дозволяє приховувати дані в файлах `JPEG,
 - `steghide info file` виявляє, чи файл містить приховані дані.
 - `steghide extract -sf file [--passphrase password]` витягує приховані дані, пароль вказувати не обов'язково.
 
-Відвідайте [цей сайт](https://futureboy.us/stegano/decinput.html), щоб дізнатись про витягування даних з вебу.
+Відвідайте [цей сайт](https://futureboy.us/stegano/decinput.html), щоб витягти дані з медіа файлів онлайн.
 
 **Bruteforce атака за допомогою Stegcracker:**
 - Для спроби зламу пароля з Steghide використовуйте [stegcracker](https://github.com/Paradoxis/StegCracker.git) таким чином:
