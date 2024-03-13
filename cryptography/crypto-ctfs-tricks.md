@@ -204,7 +204,7 @@ drnajapajrna
 
 ### A1Z26
 
-Letters to their numerical value
+Літери до їхніх числових значень
 
 ```
 8 15 12 1 3 1 18 1 3 15 12 1
